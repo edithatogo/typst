@@ -8,6 +8,9 @@ on:
 env:
   REGISTRY: ghcr.io
 
+permissions:
+  contents: read
+
 jobs:
   build:
     name: Build Images
@@ -23,6 +26,11 @@ jobs:
       packages: write
 
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
       - name: Prepare
         run: |
           platform=${{ matrix.platform }}
@@ -91,6 +99,11 @@ jobs:
       packages: write
 
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
       - name: Prepare
         run: |
           echo "IMAGE_NAME=${REGISTRY}/${GITHUB_REPOSITORY@L}" >> $GITHUB_ENV
