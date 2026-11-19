@@ -1,5 +1,5 @@
 FROM --platform=$BUILDPLATFORM tonistiigi/xx AS xx
-FROM --platform=$BUILDPLATFORM rust:alpine AS build
+FROM --platform=$BUILDPLATFORM rust:alpine@sha256:2cccd8b212b37dad15a555589c1b6787da4ab913fe24d8a9b2d99d3498869409 AS build
 
 COPY --from=xx / /
 
@@ -24,7 +24,7 @@ RUN --mount=type=cache,target=/root/.cargo/git/db \
     cp target/$(xx-cargo --print-target-triple)/release/typst target/release/typst && \
     xx-verify target/release/typst
 
-FROM alpine:latest
+FROM alpine:latest@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf
 ARG CREATED
 ARG REVISION
 
