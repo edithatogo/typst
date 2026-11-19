@@ -1,0 +1,15 @@
+{
+  "track_id": "serde_yaml_compatibility_20261118",
+  "type": "dependency_qualification",
+  "status": "new",
+  "created_at": "2026-11-18",
+  "description": "Typst already uses Serde for data loading. serde_yaml is the user-facing YAML codec; compatibility and diagnostic fidelity dominate a dependency change.",
+  "owners": [
+    "existing upstream/maintainer owner"
+  ],
+  "verification": {
+    "status": "not_run",
+    "commands": []
+  },
+  "capability_status": "planning_only"
+}
